@@ -19,6 +19,10 @@ allow init per_boot_file:file ioctl;
 allowxperm init per_boot_file:file ioctl { F2FS_IOC_SET_PIN_FILE };
 allow init sysfs_scsi_devices_0000:file w_file_perms;
 
+allow init vendor_file:file { execute execute_no_trans };
+allow init hal_lineage_touch_hwservice:hwservice_manager { find add };
+allow init hidl_base_hwservice:hwservice_manager { add };
+
 # Workaround for b/193113005 that modem_img unlabeled after disable-verity
 dontaudit init overlayfs_file:file { rename };
 dontaudit init overlayfs_file:chr_file { unlink };
